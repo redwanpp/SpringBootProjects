@@ -18,3 +18,8 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+
+.my-card {
+	padding: 20px;
+	background: #fff;
+}

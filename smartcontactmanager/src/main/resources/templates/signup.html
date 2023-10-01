@@ -13,9 +13,15 @@
 					
 					<div class="my-card">
 						
+						  <div th:if="${session.message}" th:classappend="${session.message.type}" class="alert alert-success" role="alert">
+						    	<p th:text="${session.message.content}"></p>
+						    								
+						    	<block th:text="${@sessionHelper.removeMessageFromSession()}"></block>
+						  </div>
+						
 						<h1 class="text-center">Register Here !!</h1>
 						
-						<form action="" th:action="@{/do_register}" method="post">
+						<form action="" th:action="@{/do_register}" method="post" th:object="${user}">
 							
 							<!--name field-->
 							<div class="mb-3">
@@ -23,12 +29,14 @@
 							    <label for="exampleInputEmail1" class="form-label">Your Name</label>
 							    
 							    <input 
+							    name="name"
 							    type="text"
 							    class="form-control"
 							    id="name_field" 
 							    aria-describedby="emailHelp" 
 							    placeholder="Enter here"
 							    required
+							    th:value="${user.name}"
 							    \>
 							    
 							</div>
@@ -39,12 +47,14 @@
 							    <label for="exampleInputEmail1" class="form-label">Your Email</label>
 							    
 							    <input 
+							    name="email"
 							    type="email"
 							    class="form-control"
 							    id="email_field" 
 							    aria-describedby="emailHelp" 
 							    placeholder="Enter here"
 							    required
+							    th:value="${user.email}"
 							    \>
 							    
 							</div>
@@ -56,6 +66,7 @@
 							    <label for="exampleInputEmail1" class="form-label">Your Password</label>
 							    
 							    <input 
+							    name="password"
 							    type="password"
 							    class="form-control"
 							    id="password_field" 
@@ -69,7 +80,20 @@
 							<!--user about field-->
 							
 							<div class="mb-3">
-								<textarea class="form-control" name="Enter something your salf" id="" cols="25" rows="10"></textarea>
+								<textarea th:name="about" th:value="${user.about}"  class="form-control" name="Enter something your salf" id="" cols="25" rows="10"></textarea>
+							</div>
+							
+							<!--Terms and condition-->
+							<div class="mb-3 form-check">
+								
+								<lebal for="agreement">Accept terms and conditions</lebal>
+								
+								<input 
+									type="checkbox"
+									name="agreement"
+									class="form-check-input"
+									id="agreemnet" />
+								
 							</div>
 							
 							<div class="container text-center">

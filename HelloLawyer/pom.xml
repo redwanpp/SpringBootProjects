@@ -8,11 +8,11 @@
 		<version>3.1.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.lawyer</groupId>
-	<artifactId>LayerMedia</artifactId>
+	<groupId>com.Lawyer</groupId>
+	<artifactId>HelloLawyer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>LayerMedia</name>
-	<description>This is an project for finding lawyer in easy way and without facing any broker.</description>
+	<name>HelloLawyer</name>
+	<description>A media platform for finding lawyer easily without facing any broker.</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

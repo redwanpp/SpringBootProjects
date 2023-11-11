@@ -28,7 +28,7 @@
 						
 						<h1 class="text-center">Register Here</h1>
 						
-						<form  th:action="@{/do_register}" method="post" th:object="${client}">
+						<form novalidate th:action="@{/do_register}" method="post" th:object="${client}">
 							
 							<!--first name field -->
 							  <div class="form-group row">
@@ -39,12 +39,16 @@
 								    name="firstName"
 								    type="text" 
 								    class="form-control" 
+								    th:classappend="${#fields.hasErrors('firstName') ? 'is-invalid':''}"
 								    id="first-name-field" 
 								    aria-describedby="emailHelp"
 								    placeholder="Enter here"
 								    required
 								    th:value="${client.firstName}"
 								    />
+								    
+								    <div class="invalid-feedback" th:each="e : ${#fields.errors('firstName')}" th:text="${e}">
+								    </div>
 								</div>
 							    
 							    <!--last name field-->
@@ -54,13 +58,15 @@
 							    <input 
 							    name="lastName"
 							    type="text" 
-							    class="form-control" 
+							    class="form-control"
 							    id="last-name-field" 
 							    aria-describedby="emailHelp"
 							    placeholder="Enter here"
 							    required
 							    th:value="${client.lastName}"
 							    />
+							    
+							    
 							  </div>
 							  
 							  </div>
@@ -76,12 +82,17 @@
 							    dirname="email"
 							    type="email" 
 							    class="form-control" 
+							    th:classappend="${#fields.hasErrors('email') ? 'is-invalid':''}"
 							    id="email-field" 
 							    aria-describedby="emailHelp"
 							    placeholder="Enter here"
 							    required
 							    th:value="${client.email}"
 							    />
+							    
+							    <div class="invalid-feedback" th:each="e : ${#fields.errors('email')}" th:text="${e}">
+								</div>
+								    
 							  </div>
 							  
 							  <!--password field-->
@@ -92,11 +103,15 @@
 							    name="password"
 							    type="password" 
 							    class="form-control" 
+							    th:classappend="${#fields.hasErrors('password') ? 'is-invalid':''}"
 							    id="password-field" 
 							    aria-describedby="emailHelp"
 							    placeholder="Enter here"
 							    required
 							    />
+							    
+							    <div class="invalid-feedback" th:each="e : ${#fields.errors('password')}" th:text="${e}">
+								</div>
 							  </div>
 							  
 							  <div class="form-group mt-2">

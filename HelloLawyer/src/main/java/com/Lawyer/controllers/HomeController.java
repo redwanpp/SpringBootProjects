@@ -3,6 +3,7 @@ package com.Lawyer.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +14,7 @@ import com.Lawyer.entities.Client;
 import com.Lawyer.helper.Message;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 @Controller
 public class HomeController {
@@ -47,7 +49,7 @@ public class HomeController {
     
     //handler for registering client
     @RequestMapping(value="/do_register", method=RequestMethod.POST)
-    public String register(@ModelAttribute("client") Client client, @RequestParam(value = "agreement", defaultValue = "false") boolean agreement, Model model, HttpSession session) {
+    public String register(@Valid @ModelAttribute("client") Client client, BindingResult result, @RequestParam(value = "agreement", defaultValue = "false") boolean agreement, Model model, HttpSession session) {
     	
     	try {
 			
@@ -56,6 +58,14 @@ public class HomeController {
         		
         		throw new Exception("You have not agreed with the terms and conditions");
         	}
+    		
+    		if(result.hasErrors()) {
+    			
+    			System.out.println("ERROR " + result.toString());
+    			model.addAttribute("client", client);
+    			
+    			return "signup";
+    		}
         	
         	client.setRole("Role_CLIENT");
         	client.setEnable(true);
@@ -64,7 +74,7 @@ public class HomeController {
         	System.out.println("Agreement: " +agreement);
         	System.out.println("Client: " + client);
         	
-        	Client result = this.clientRepository.save(client);
+        	Client result1 = this.clientRepository.save(client);
         	
         	model.addAttribute("client", new Client());
         	

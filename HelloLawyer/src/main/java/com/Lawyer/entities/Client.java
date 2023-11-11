@@ -1,7 +1,15 @@
 package com.Lawyer.entities;
 
-import jakarta.persistence.*;
-import org.springframework.stereotype.Controller;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
 //@Table(name="Client")
@@ -10,12 +18,22 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    
+    @NotBlank(message= "First name should not be blank !!")
+    @Size(min=2, max=20, message= "Length between 2 to 20 allowed !!")
     private String firstName;
     private String lastName;
     private int age;
+    
     @Column(unique = true)
+    @NotBlank(message = "Email must be required !!")
+    @Email
+    @Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$", message="please provide a valid Email !!")
     private String email;
     private String role;
+    
+    @NotBlank(message = "Password must be required !!")
+    @Size(min = 4, max = 32, message = "Size between 4 to 32 character allowed !!")
     private String password;
     private String imageUrl;
     @Column(length = 500)

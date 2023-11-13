@@ -1,1 +1,0 @@
-INDEX VERSION 1.134+D:\github\SpringBootProjects\HelloLawyer\.metadata\.plugins\org.eclipse.jdt.core

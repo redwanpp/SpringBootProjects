@@ -1,7 +1,11 @@
 package com.Lawyer.controllers;
 
+import com.Lawyer.dao.ClientRepository;
+import com.Lawyer.entities.Client;
+import com.Lawyer.helper.Message;
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,18 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.Lawyer.dao.ClientRepository;
-import com.Lawyer.entities.Client;
-import com.Lawyer.helper.Message;
-
-import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
-
 @Controller
 public class HomeController {
-	
-	@Autowired
-	private BCryptPasswordEncoder passwordEncoder;
 	
 	@Autowired
 	private ClientRepository clientRepository;
@@ -74,7 +68,7 @@ public class HomeController {
         	client.setRole("Role_CLIENT");
         	client.setEnable(true);
         	client.setImageUrl("default.png");
-        	client.setPassword(passwordEncoder.encode(client.getPassword()));
+        	client.setPassword(client.getPassword());
         	
         	System.out.println("Agreement: " +agreement);
         	System.out.println("Client: " + client);

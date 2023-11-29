@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>This is home page</title>
+</head>
+<body>
+<section>
+
+    <div class="col-md-6 offset-md-3">
+       <div class="container my-card">
+
+           <div class="text-center">
+               <img style="width: 100px;" src="" th:src="@{/img/login.png}" alt="" />
+           </div>
+
+           <h1 class="text-center">User Login From</h1>
+
+
+           <form novalidate th:action="@{/user/index}" method="post" th:object="${client}">
+
+               <!--email field-->
+               <div class="form-group">
+                   <label for="email-field">Email</label>
+
+                   <input
+                           name="email"
+                           type="email"
+                           class="form-control"
+                           th:field="*{email}"
+                           id="email-field"
+                           aria-describedby="emailHelp"
+                           placeholder="Enter here"
+                           required
+                   />
+               </div>
+
+               <!--password field-->
+               <div class="form-group">
+                   <label for="password-field">Password</label>
+
+                   <input
+                           name="password"
+                           type="password"
+                           class="form-control"
+                           th:field="*{password}"
+                           id="password-field"
+                           aria-describedby="emailHelp"
+                           placeholder="Enter here"
+                           required
+                   />
+               </div>
+
+               <div class="container text-center">
+
+                   <button type="submit" class="btn bg-primary text-light mt-3">
+                       Login
+                   </button>
+
+
+                   <button type="reset" class="btn bg-danger text-light mt-3">
+                       Reset
+                   </button>
+
+               </div>
+
+           </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>

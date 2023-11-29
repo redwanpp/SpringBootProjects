@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -11,7 +11,7 @@
     <section class="banner d-flex justify-content-center align-items-center">
         <div class="text-center">
 			<h1 class="font-weight-bold">Hello Lawyer</h1>
-			<p>Help to find right lawyer based on yo cases. You can also see their previous records <br />and chat with them.
+			<p>Help to find right lawyer based on your cases. You can also see their previous records <br />and chat with them.
 			</p>
 			<button class="btn bg-primary btn-lg text-white">Get Started</button>
 		</div>

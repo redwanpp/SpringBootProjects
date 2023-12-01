@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/base::layout(~{::section})}">
+<head>
+    <meta charset="UTF-8" />
+    <title>User Dashboard</title>
+</head>
+<body>
+<section>
+    <div class="card">
+        <div class="card-body">
+            <h1 class="text-center">Create Post</h1>
+
+            <div class="container-fluid mt-1">
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <form action="#"
+                              th:object="${clientPost}"
+                              method="post"
+                              th:action="@{/user/process-client-post}"
+                              class="mt-2"
+                        >
+                            <!--Post title-->
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text mr-3">
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </div>
+                                <input type="text" id="postTitle" name="postTitle" placeholder="Enter title here" class="form-control">
+                            </div>
+
+                            <!--Description-->
+                            <div class="form-group mt-3" >
+                                <textarea name="postDescription" id="description" cols="130" rows="10" placeholder="Enter description here"></textarea>
+                            </div>
+
+                            <div class="custom-file">
+                                <input enctype="multipart/form-data" name="clientPostImage" type="file">
+                            </div>
+
+                            <div class="container text-center">
+                                <button class="btn btn-outline-primary">Post</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

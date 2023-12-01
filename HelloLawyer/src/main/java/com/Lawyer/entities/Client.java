@@ -1,16 +1,13 @@
 package com.Lawyer.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="Client")
@@ -44,8 +41,18 @@ public class Client {
 
     @ManyToOne
     private Lawyer lawyer;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy =  "client")
+    private List<ClientPost> posts = new ArrayList<>();
 
     public Client() {
+    }
+
+    public List<ClientPost> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<ClientPost> posts) {
+        this.posts = posts;
     }
 
     public Client(int id, String firstName, String lastName, int age, String email, String role, String password, String imageUrl, String about, boolean enable) {

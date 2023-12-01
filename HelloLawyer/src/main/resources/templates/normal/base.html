@@ -8,7 +8,10 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-<!--    ownCss-->
+<!--    font awosome CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!--ownCss-->
     <link rel="stylesheet" th:href="@{/css/style.css}">
 
     <title th:text="${title}">Base html</title>
@@ -18,7 +21,7 @@
 	
 	
 <!--navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Hello Lawyer</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +43,7 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" th:href="@{/login}">Logout</a>
+          <a class="nav-link" th:href="@{/sign-out}">Logout</a>
         </li>
         
       </ul>
@@ -50,13 +53,34 @@
 </nav>
 <!--End navbar-->
 
-<div th:replace="${content}"></div>
+
+<!--Sidebar-->
+<div id="mySidebar" class="sidebar mt-5" >
+    <span class="crossBtn">&times;</span>
+
+    <a href="#" th:href="@{/user/index}" class="item"><i class="fa-solid fa-house-circle-check"></i> Home</a>
+    <a href="#" class="item"><i class="fa-solid fa-address-card"></i> View post</a>
+    <a href="#" th:href="@{/user/add-client-post}" class="item"><i class="fa-solid fa-file-import"></i> Add post</a>
+    <a href="#" class="item"><i class="fa-solid fa-user"></i> Your profile</a>
+    <a href="#" class="item"><i class="fa-solid fa-wrench"></i> Settings</a>
+    <a href="#" th:href="@{/sign-out}" class="item"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+</div>
+<!--End Sidebar-->
+
+
+<!--Content-->
+<div class="content" >
+    <i class="fas fa-bars m-3"></i>
+
+    <div th:replace="${content}"></div>
+</div>
+<!--End Content-->
 
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

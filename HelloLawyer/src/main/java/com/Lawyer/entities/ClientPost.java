@@ -8,7 +8,7 @@ public class ClientPost {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int pid;
     private String postTitle;
-    @Column(length = 500)
+    @Column(length = 5000)
     private String postDescription;
 
     private String imgUrl;

@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:fragment="layout(content)">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -59,7 +60,7 @@
     <span class="crossBtn">&times;</span>
 
     <a href="#" th:href="@{/user/index}" class="item"><i class="fa-solid fa-house-circle-check"></i> Home</a>
-    <a href="#" class="item"><i class="fa-solid fa-address-card"></i> View post</a>
+    <a href="#" th:href="@{/user/view-post}" class="item"><i class="fa-solid fa-address-card"></i> View post</a>
     <a href="#" th:href="@{/user/add-client-post}" class="item"><i class="fa-solid fa-file-import"></i> Add post</a>
     <a href="#" class="item"><i class="fa-solid fa-user"></i> Your profile</a>
     <a href="#" class="item"><i class="fa-solid fa-wrench"></i> Settings</a>

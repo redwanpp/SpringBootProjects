@@ -44,15 +44,15 @@ public class Client {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy =  "client")
     private List<ClientPost> posts = new ArrayList<>();
 
-    public Client() {
-    }
-
     public List<ClientPost> getPosts() {
         return posts;
     }
 
     public void setPosts(List<ClientPost> posts) {
         this.posts = posts;
+    }
+
+    public Client() {
     }
 
     public Client(int id, String firstName, String lastName, int age, String email, String role, String password, String imageUrl, String about, boolean enable) {

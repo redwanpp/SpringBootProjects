@@ -69,3 +69,8 @@ body {
 .content {
     margin-left: 20%;
 }
+
+#signout{
+    text-decoration: none;
+    color: white;
+}
